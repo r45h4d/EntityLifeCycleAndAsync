@@ -1,11 +1,10 @@
 package com.example.csp.dao.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
+
+import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Getter
 @Setter
@@ -13,14 +12,14 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 @Entity
 @Table(name = "deaneries")
+@Builder
 @Slf4j
 public class DeaneryEntity {
-    @Column(name = "name", nullable = false, length = 64)
-    String name;
+    private String name;
+    private String dean;
 
-    @Column(name = "dean", nullable = false, length = 64)
-    String dean;
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
     @PostUpdate
